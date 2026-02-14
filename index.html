@@ -94,7 +94,7 @@ function showPage(pageId) {
         video.muted = false;
       }, 800);
 
-    }, 5000); // <-- change this number for delay (2000 = 2 sec)
+    }, 15000); // <-- change this number for delay (2000 = 2 sec)
   }
 }
 
@@ -120,7 +120,7 @@ function checkNickname() {
   if (input.includes(correct)) {
     showPage("page3");
   } else {
-    document.getElementById("nickMsg").innerText = "Hmm… try again, Dear 💭";
+    document.getElementById("nickMsg").innerText = "Hmm… try again Dear 💭";
   }
 }
 
@@ -158,12 +158,13 @@ function typeLetter() {
   if (i < text.length) {
     document.getElementById("typed-letter").innerHTML += text.charAt(i);
     i++;
-    setTimeout(typeLetter, 15);
+    setTimeout(typeLetter, 35);
   }
 }
 </script>
 
 </body>
 </html>
+
 
 
