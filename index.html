@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Handlee&family=Patrick+Hand&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="page1" class="page active">
+  <div class="envelope-wrapper" onclick="startExperience()">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="letter-front">
+        <div class="open-text">Open</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="page2" class="page">
+  <div class="card">
+    <h1>Just to make sure it’s only for you…</h1>
+    <p>What do I call you?</p>
+    <input type="text" id="nickname">
+    <button onclick="checkNickname()">Enter</button>
+    <p id="nickMsg"></p>
+  </div>
+</div>
+
+<div id="page3" class="page">
+  <div class="card">
+    <h1>One more thing…</h1>
+    <p>Where did we first kiss?</p>
+    <input type="text" id="kiss">
+    <button onclick="checkKiss()">Enter</button>
+    <p id="kissMsg"></p>
+  </div>
+</div>
+
+<div id="page4" class="page">
+  <div class="reveal-container">
+
+    <div class="letter-section">
+      <h2>For You 💜</h2>
+      <p id="typed-letter"></p>
+    </div>
+
+    <div class="video-section">
+      <video id="loveVideo" playsinline muted>
+        <source src="yourvideo.mp4" type="video/mp4">
+      </video>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+  heart.style.fontSize = (15 + Math.random() * 25) + "px";
+  document.querySelector(".hearts").appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 12000);
+}
+setInterval(createHeart, 600);
+
+const pages = document.querySelectorAll(".page");
+const music = document.getElementById("bgMusic");
+
+function showPage(pageId) {
+  pages.forEach(p => p.classList.remove("active"));
+  document.getElementById(pageId).classList.add("active");
+
+  if (pageId === "page4") {
+    const video = document.getElementById("loveVideo");
+    video.muted = true;
+    video.play();
+
+    setTimeout(() => {
+      video.muted = false;
+    }, 800);
+  }
+}
+
+function startExperience() {
+  music.volume = 0;
+  music.play();
+
+  let fadeAudio = setInterval(() => {
+    if (music.volume < 0.35) {
+      music.volume += 0.02;
+    } else {
+      clearInterval(fadeAudio);
+    }
+  }, 100);
+
+  showPage("page2");
+}
+
+function checkNickname() {
+  const correct = "Budi".toLowerCase();
+  const input = document.getElementById("nickname").value.toLowerCase().trim();
+
+  if (input.includes(correct)) {
+    showPage("page3");
+  } else {
+    document.getElementById("nickMsg").innerText = "Hmm… try again, Dear 💭";
+  }
+}
+
+function checkKiss() {
+  const correct = "Nepalgunj".toLowerCase();
+  const input = document.getElementById("kiss").value.toLowerCase().trim();
+
+  if (input.includes(correct)) {
+    showPage("page4");
+    typeWriter();
+  } else {
+    document.getElementById("kissMsg").innerText = "Think about that moment… 💜";
+  }
+}
+
+const text = `Dear Budi,
+
+From the very beginning, ever since I saw you, it was always you and it has always been you.
+
+Every laugh, every memory, every quiet moment we shared,
+If I had to do it again I would choose you everytime.
+
+I will forever be yours and yours only.
+Every single time. 💜`;
+
+let i = 0;
+
+function typeWriter() {
+  i = 0;
+  document.getElementById("typed-letter").innerHTML = "";
+  typeLetter();
+}
+
+function typeLetter() {
+  if (i < text.length) {
+    document.getElementById("typed-letter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeLetter, 15);
+  }
+}
+</script>
+
+</body>
+</html>
