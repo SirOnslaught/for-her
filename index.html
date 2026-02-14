@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ch<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,12 +85,16 @@ function showPage(pageId) {
 
   if (pageId === "page4") {
     const video = document.getElementById("loveVideo");
-    video.muted = true;
-    video.play();
 
-    setTimeout(() => {
-      video.muted = false;
-    }, 800);
+    setTimeout(() => {   // ⏳ Delay before video starts
+      video.muted = true;
+      video.play();
+
+      setTimeout(() => {
+        video.muted = false;
+      }, 800);
+
+    }, 2000); // <-- change this number for delay (2000 = 2 sec)
   }
 }
 
@@ -161,3 +165,4 @@ function typeLetter() {
 
 </body>
 </html>
+
