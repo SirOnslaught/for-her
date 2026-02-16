@@ -23,9 +23,11 @@ body {
 
 .page.active {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;  /* instead of center */
   align-items: center;
   min-height: 100vh;
+  padding: 40px 20px;
   animation: fadeIn 1s ease;
 }
 
@@ -329,4 +331,5 @@ video {
   height: auto;
   border-radius: 15px;
 }
+
 
