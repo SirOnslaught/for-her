@@ -304,4 +304,27 @@ video {
   object-fit: cover;
   border-radius: 25px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+
+}
+
+/* Make layout responsive */
+.reveal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.letter-section,
+.video-section {
+  flex: 1 1 400px;
+  max-width: 500px;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
 }
