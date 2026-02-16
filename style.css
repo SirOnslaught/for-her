@@ -1,10 +1,11 @@
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #f3e8ff, #e9d5ff, #f5e1ff);
   background-size: 200% 200%;
   animation: gradientShift 12s ease infinite;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: 'Patrick Hand', cursive;
 }
 
@@ -328,3 +329,4 @@ video {
   height: auto;
   border-radius: 15px;
 }
+
